@@ -34,7 +34,6 @@ Navigator.pushReplacementNamed(context,'/home', arguments:{
   "flag":instance.flag,
   "time":instance.time,
   "isDaytime":instance.isDaytime,
-
 });
 
 }
