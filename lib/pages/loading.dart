@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:world_time/services/world_time.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+
 
 class Loading extends StatefulWidget {
   @override
@@ -49,12 +51,20 @@ Navigator.pushReplacementNamed(context,'/home', arguments:{
 
   @override
   Widget build(BuildContext context) {
+
     return Scaffold(
+      backgroundColor: Colors.blue[900],
 //      body:Text('loading screen'),
-    body:Padding(
-      padding:EdgeInsets.all(50.0),
-          child:Text("loading..."),
+    body: Center(
+      child: SpinKitFadingCube(
+        color:Colors.white,
+        size:80.0,
+      ),
     ),
+//    Padding(
+//      padding:EdgeInsets.all(50.0),
+//          child:Text("loading..."),
+//    ),
     );
   }
 }
