@@ -18,15 +18,21 @@ class _LoadingState extends State<Loading> {
 //  }
 
 
-String time = 'loading...';
+//String time = 'loading...';
 
 void setupWorldTime() async {
   WorldTime instance = WorldTime(location:'Berlin', flag:'germany.png', url:'Europe/Berlin');
  await instance.getTime();
  //print(instance.time);
- setState((){
-   time = instance.time;
- });
+// setState((){
+//   time = instance.time;
+// });
+Navigator.pushReplacementNamed(context,'/home', arguments:{
+  "location":instance.location,
+  "flag":instance.flag,
+  "time":instance.time,
+
+});
 
 }
 
@@ -47,7 +53,7 @@ void setupWorldTime() async {
 //      body:Text('loading screen'),
     body:Padding(
       padding:EdgeInsets.all(50.0),
-          child:Text(time),
+          child:Text("loading..."),
     ),
     );
   }
