@@ -13,24 +13,32 @@ String url ;// location url for api endpoint
 
 
   Future<void> getTime() async {
-//    Response response = await get('http://worldtimeapi.org/api/timezone/Europe/London');
-    Response response = await get('http://worldtimeapi.org/api/timezone/$url');
 
-    Map data = jsonDecode(response.body);
+    try {
+      //    Response response = await get('http://worldtimeapi.org/api/timezone/Europe/London');
+      Response response = await get('http://worldtimeapi.org/api/timezone/$url');
+
+      Map data = jsonDecode(response.body);
 //  print(data);
 // get properties from data
-    String datetime = data['datetime'];
-    String offset = data['utc_offset'].substring(1,3);
+      String datetime = data['datetime'];
+      String offset = data['utc_offset'].substring(1,3);
 //print(datetime);
 //  print(offset);
 
 // create a DateTime obj
-    DateTime now = DateTime.parse(datetime);
-    now = now.add(Duration(hours:int.parse(offset)));
-    //print(now);
+      DateTime now = DateTime.parse(datetime);
+      now = now.add(Duration(hours:int.parse(offset)));
+      //print(now);
 
-    // set the time property
-    time = now.toString();
+      // set the time property
+      time = now.toString();
+    } catch (e){
+print('caught error: $e');
+time = 'could not get time data';
+    }
+
+
   }
 }
 
